@@ -1,0 +1,19 @@
+{
+  "name": "webpack-resolve-problem",
+  "version": "0.0.0",
+  "license": "MIT",
+  "engines": {
+    "node": ">=8.3.0"
+  },
+  "scripts": {
+    "start": "webpack --mode development",
+    "start:with-merge": "webpack --mode development --env.merge"
+  },
+  "dependencies": {
+    "qss": "^2.0.3"
+  },
+  "devDependencies": {
+    "webpack": "^4.29.6",
+    "webpack-cli": "^3.3.0"
+  }
+}
