@@ -6,8 +6,7 @@
     "node": ">=8.3.0"
   },
   "scripts": {
-    "start": "webpack --mode development",
-    "start:with-merge": "webpack --mode development --env.merge"
+    "start": "webpack --mode development"
   },
   "dependencies": {
     "qss": "^2.0.3"

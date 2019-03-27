@@ -1,27 +1,11 @@
 const { resolve } = require("path");
 
-const unnecessary = {
-  target: "node",
-  devtool: false,
-  optimization: {
-    runtimeChunk: "single",
-    splitChunks: {
-      cacheGroups: {
-        vendors: {
-          test: /[\\/]node_modules[\\/]/,
-          name: "vendors",
-          chunks: "all",
-          enforce: true
-        }
-      }
-    }
-  }
-};
+const unnecessary = require("./unnecessary.config");
 
 module.exports = ({ merge } = {} /* --env */) => ({
-  ...unnecessary, // Make main.js easy to read
+  ...unnecessary, // Make dist/main.js easy to read, you can remove this line
   resolve: {
-    alias: { qs: "qss" }
+    alias: { qs: "qss" } // root alias setting
   },
   module: {
     rules: [
@@ -29,10 +13,8 @@ module.exports = ({ merge } = {} /* --env */) => ({
         // use `resolve` in config.module.rule[], then it works.
         include: resolve("src"),
         resolve: {
-          alias: {
-            "@": resolve("src"),
-            // form --env.merge
-            ...(merge ? { qs: "qss" } : undefined)
+          alias: {// this options will override root alias setting
+            // can be anything or just empty
           }
         }
       }
