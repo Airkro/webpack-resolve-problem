@@ -11,12 +11,20 @@ module.exports = ({ merge } = {} /* --env */) => ({
     rules: [
       {
         // use `resolve` in config.module.rule[], then it works.
+        test: /\.js$/,
+        loader: "babel-loader",
         include: resolve("src"),
         resolve: {
-          alias: {// this options will override root alias setting
+          alias: {
+            // this options will override root alias setting
             // can be anything or just empty
           }
         }
+      },
+      {
+        test: /\.js$/,
+        loader: "babel-loader",
+        exclude: resolve("src")
       }
     ]
   }
